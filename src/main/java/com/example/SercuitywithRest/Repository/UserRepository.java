@@ -6,5 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<UserModel,Long > {
-    Optional<UserModel> findUsername(String email);
+
+    static Optional<UserModel> findByUserName(String name) {
+        return Optional.empty();
+    }
 }
+
+

@@ -1,10 +1,9 @@
 package com.example.SercuitywithRest.Model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+
 
 @Entity
-@Data
 @Table(name = "Users")
 public class UserModel {
     @Id

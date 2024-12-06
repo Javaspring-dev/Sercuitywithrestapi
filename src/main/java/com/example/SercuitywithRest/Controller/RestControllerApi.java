@@ -7,17 +7,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api")
 public class RestControllerApi {
       @Autowired
     private UserService userService;
    @PostMapping("/create")
-    public String createUser(@RequestBody UserModel user){
+    public String createdUser(@RequestBody UserModel user)throws Exception{
+       try{
        userService.createUser(user);
        return "User created";
+       } catch (RuntimeException e) {
+           throw new RuntimeException(e);
+       }
+
    }
    @GetMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String password){
+    public String logedin(@RequestParam String email, @RequestParam String password){
        try {
            UserModel user = userService.login(email,password);
            return "Login Sucessfully";
